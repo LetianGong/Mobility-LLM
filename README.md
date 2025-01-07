@@ -1,5 +1,5 @@
-# Mobility-LLM: Learning Visiting Intentions and Travel Preferences from Human Mobility Data with Large Language Models
-# Datasets
+## Mobility-LLM: Learning Visiting Intentions and Travel Preferences from Human Mobility Data with Large Language Models
+### Datasets
 To demonstrate the superiority of our proposed model, our experiements are carried out on four real-world datasets derived from Gowalla (GOW), WeePlace (WEE), Brightkite (BKC) and FourSquare (TKY) check-in data.
 
 In order to facilitate the training of our model, Our model undergoes a filtering process that selects high-quality check-in sequences for training. To ensure data consistency, we set a maximum historical time limit of 120 days and filter out users with fewer than 10 records and places visited fewer than 10 times.
@@ -18,17 +18,17 @@ The below table shows the statistics of three datasets.
       - https://pan.baidu.com/s/1nWWMzS1yQaGdaiVd-njJxQ 
   - Copy all files and directories to `MobilityLLM/data/new_datasets`
 
-# Large Lanugage Models
+### Large Lanugage Models
 We compare eight representative backbones with varying capacities, including TinyLlama, TinyLlama-Chat, LiteLlama, phi-2, pythia-70M, pythia-1B, pythia-2.8B and GPT-2.
 - Download models from following sources:
   - <a href='https://huggingface.co/models'>https://huggingface.co/models</a>
   - Copy all files and directories to `MobilityLLM/params/*/`
 
-# Requirements
+### Requirements
 - python >= 3.6
 - PyTorch >= 1.8
 
-# Usage :
+### Usage :
   Enter directory `MobilityLLM`.
   Downstream tasks:
   Location Prediction (LP), Trajectory User Link (TUL), or Time Prediction (TP).
@@ -69,10 +69,10 @@ We compare eight representative backbones with varying capacities, including Tin
     <br>
   - Train model on BKC of TP task:
     `python train_MobilityLLM.py --config config/MobilityLLM_bkc_TPP.conf --dataroot data/ --model_class`
-# Configuration
+### Configuration
 The configuration file `MobilityLLM_*.conf` contains three parts: Data, Training and Model:
 
-## Data
+#### Data
 - dataset_name: The name of the datasets, represents www_GOW, www_BKC, www_TKY or www_WEE.
 - max_his_period_days: The max history time.
 - max_merge_seconds_limit: To judge whether two identical locations are the same event.
@@ -81,7 +81,7 @@ The configuration file `MobilityLLM_*.conf` contains three parts: Data, Training
 - least_checkins_count: To filter users, keep users who have at least * checkins.
 - split_save: 1 or 0, representing whether datasets are split saved.
 
-## Training
+#### Training
 - mode: train for default, 
 - ctx: cuda index, 0 for default
 - regularization: float, regularization factor.
@@ -95,7 +95,7 @@ The configuration file `MobilityLLM_*.conf` contains three parts: Data, Training
 - batch_size: int
 - save_results: bool
 
-## Model
+#### Model
 - adv: 0 or 1, enable adversarial or not.
 - downstream: POI, TUL or TPP, representing Location Prediction, Trajectory User Link, and Time Prediction respestively.
 
